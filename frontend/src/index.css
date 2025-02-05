@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+.container {
+    @apply mx-auto; /* Center the container */
+    @apply sm:max-w-[640px]; /* Apply max-width for sm breakpoint */
+    @apply lg:max-w-[1024px]; /* Apply max-width for lg breakpoint */
+    @apply xl:max-w-[1280px]; /* Apply max-width for xl breakpoint */
+  }
