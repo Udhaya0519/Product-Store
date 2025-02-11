@@ -4,7 +4,6 @@ const API_URL = import.meta.env.VITE_API_URL
 
 export const useProductStore = create((set) => ({   //set is a function by zustand to modify the state of the store
     products: [],
-    isLoading:false,
     setProducts: (products) => set({ products }),
     createProduct: async (newProduct) => {
 
@@ -23,10 +22,9 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
         return { success:true, message:"Product Added Successfully!"}
     },
     fetchProducts: async () => {
-        set({ isLoading: true })
         const res = await fetch(`${API_URL}`)
         const data = await res.json()
-        set({ products: data.data, isLoading: false}) 
+        set({ products: data.data }) 
     },
     deleteProduct: async (id) => {
         const res = await fetch(`${API_URL}/${id}`,{

@@ -6,7 +6,6 @@ import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 import Alert from "../components/Alert";
 
-const { isLoading } = useProductStore();
 
 function HomePage() {
    const { fetchProducts, products, deleteProduct } = useProductStore();
@@ -63,7 +62,6 @@ function HomePage() {
                })}
             </div>
 
-            
 
             {products.length === 0 ? (
                <div className="product-not-found h-[50vh] flex flex-col sm:flex-row items-center justify-center">
