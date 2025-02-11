@@ -63,12 +63,10 @@ function HomePage() {
             </div>
 
             {isLoading ? (
-               <div className="h-[500px] flex items-center justify-center">
+               <div className="h-[300px] flex items-center justify-center">
                   <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
                </div>
-            ) : null}
-
-            {products.length === 0 ? (
+            ) : products.length === 0 ? (
                <div className="product-not-found h-[50vh] flex flex-col sm:flex-row items-center justify-center">
                   <div className="flex !items-center">
                      <p className="text-gray-400 text-2xl sm:text-3xl">
@@ -83,9 +81,7 @@ function HomePage() {
                      Create a Product
                   </Link>
                </div>
-            ) : (
-               <></>
-            )}
+            ) : null}
          </div>
       </div>
    );
