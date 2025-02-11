@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-const VITE_API_URL = import.meta.env.API_URL
+const API_URL = import.meta.env.VITE_API_URL
 
 export const useProductStore = create((set) => ({   //set is a function by zustand to modify the state of the store
     products: [],
@@ -11,7 +11,7 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
             return { success:false, message:"Please provide all fields."}
         }
 
-        const res = await fetch(`${VITE_API_URL}`,{
+        const res = await fetch(`${API_URL}`,{
             method:"POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(newProduct)
@@ -22,12 +22,12 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
         return { success:true, message:"Product Added Successfully!"}
     },
     fetchProducts: async () => {
-        const res = await fetch(`${VITE_API_URL}`)
+        const res = await fetch(`${API_URL}`)
         const data = await res.json()
         set({ products: data.data}) 
     },
     deleteProduct: async (id) => {
-        const res = await fetch(`${VITE_API_URL}${id}`,{
+        const res = await fetch(`${API_URL}${id}`,{
             method: "DELETE"
         })
         const data = await res.json()   //i cannot directly access the success and message so if condition to check then return custom msg
@@ -38,7 +38,7 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
         
     },
     updateProduct: async (id, updatedProduct) => {
-        const res = await fetch(`${VITE_API_URL}${id}`,{
+        const res = await fetch(`${API_URL}${id}`,{
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(updatedProduct)
