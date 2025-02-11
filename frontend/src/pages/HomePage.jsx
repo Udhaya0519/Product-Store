@@ -6,9 +6,9 @@ import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 import Alert from "../components/Alert";
 
-
 function HomePage() {
-   const { fetchProducts, products, deleteProduct, isLoading } = useProductStore();
+   const { fetchProducts, products, deleteProduct, isLoading } =
+      useProductStore();
 
    useEffect(() => {
       fetchProducts();
@@ -61,9 +61,12 @@ function HomePage() {
                   );
                })}
             </div>
-            
-            { isLoading ? <div className="text-4xl text-yellow-400 text-center">Loading...</div> : <></>}
 
+            {isLoading ? (
+               <div className="h-[500px] flex items-center justify-center">
+                  <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+               </div>
+            ) : null}
 
             {products.length === 0 ? (
                <div className="product-not-found h-[50vh] flex flex-col sm:flex-row items-center justify-center">
