@@ -8,7 +8,7 @@ import Alert from "../components/Alert";
 
 
 function HomePage() {
-   const { fetchProducts, products, deleteProduct } = useProductStore();
+   const { fetchProducts, products, deleteProduct, isLoading } = useProductStore();
 
    useEffect(() => {
       fetchProducts();
@@ -61,6 +61,8 @@ function HomePage() {
                   );
                })}
             </div>
+            
+            { isLoading ? <div className="text-4xl text-yellow-400 text-center">Loading...</div> : <></>}
 
 
             {products.length === 0 ? (
