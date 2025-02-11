@@ -27,7 +27,7 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
         set({ products: data.data}) 
     },
     deleteProduct: async (id) => {
-        const res = await fetch(`${API_URL}${id}`,{
+        const res = await fetch(`${API_URL}/${id}`,{
             method: "DELETE"
         })
         const data = await res.json()   //i cannot directly access the success and message so if condition to check then return custom msg
@@ -38,7 +38,7 @@ export const useProductStore = create((set) => ({   //set is a function by zusta
         
     },
     updateProduct: async (id, updatedProduct) => {
-        const res = await fetch(`${API_URL}${id}`,{
+        const res = await fetch(`${API_URL}/${id}`,{
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(updatedProduct)
